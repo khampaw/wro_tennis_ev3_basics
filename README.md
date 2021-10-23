@@ -11,4 +11,4 @@ How does this work:
 2. We got main.py which first awaits for balls.py to load it's libraries(takes about ~30 seconds it's a big deal in term of competition) then it awaits you to press ENTER button to launch your main program(allowed by rules as you've got ~90 sec for robot to setup) 
 3. To ask for a largest ball on frame:
 4. Send a number via communicate() method which differs from previous number
-5. if it is any circles of requred hsv balls.py will send (x, y, radius) of largest ball, else it will send "NONE" string
+5. If there is any circles of requred hsv balls.py will send (x, y, radius) of largest ball, else it will send "NONE" string
