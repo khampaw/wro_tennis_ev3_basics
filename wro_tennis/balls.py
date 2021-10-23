@@ -3,6 +3,12 @@ import cv2.cv as cv
 import numpy as np
 from time import sleep
 
+"""
+Made by Pavel Khamenya 
+If you got any questions please contact me via:
+khamparobotics@gmail.com
+"""
+
 # Let main process know that this subprocess loaded all reqired libraries and started working
 print('ready')
 # Initialize the requred camera
@@ -44,17 +50,22 @@ while(1):
 		vthresh = cv2.inRange(np.array(val),np.array(vmn),np.array(vmx))
 		# connect thresholding h, s, v
 		tracking = cv2.bitwise_and(hthresh,cv2.bitwise_and(sthresh,vthresh))
+		
 		# Erode/Dilate 
 		# erode = cv2.erode(tracking,None, iterations = 2)
 		# dilation = cv2.dilate(erode,None, iterations = 2)
+		
 		# Advanced alternative of erode/dilate
 		closing = cv2.morphologyEx(tracking, cv2.MORPH_CLOSE, None, iterations = 2)
+		
 		# ...and we blur it after
 		closing = cv2.GaussianBlur(closing,(11,11),0)
+		
 		# Locate circles, read docs about parameters before shaping it up
 		circles = cv2.HoughCircles(closing,cv.CV_HOUGH_GRADIENT,2, 60,param1=120,param2=30,minRadius=1,maxRadius=0)
 		# OpenCV v3+ 
 		#circles = cv2.HoughCircles(closing, cv2.HOUGH_GRADIENT,2,60,param1=120,param2=30,minRadius=1,maxRadius=0)
+		
 		# Guess the largest circle
 		if circles is not None:
 			# c[0] is x, c[1] is y, and c[2] is radius of cirlce
@@ -62,7 +73,8 @@ while(1):
 			print(str(c[0]) + " " + str(c[1]) + " " + str(c[2]))
 		else:
 			print('NONE')
-	# Due known bug sleep() is a must for Ev3-dev code in loops unless u want 100% of your cpu be taken by this loop
+	
+	# Due known bug sleep() is a must for Ev3-dev programs in loops unless u want 100% of your cpu be taken by this loop
 	sleep(0.01)
 
 cap.release()
