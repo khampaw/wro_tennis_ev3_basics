@@ -12,12 +12,10 @@ cap = cv2.VideoCapture(0)
 cap.set(3,160)
 cap.set(4,120)
 
-# we use pseudo-semaphore to control when we need to recognize circles of reqired color
 idx = -1
 idx_old = -1
-
 while(1):
-	# read frame
+	# read fresh frame
 	_, frame = cap.read()
 	# wait for new idx
 	idx = int(raw_input())
