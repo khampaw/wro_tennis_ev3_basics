@@ -6,6 +6,8 @@ from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, SpeedPercent, MoveTank
 from ev3dev2.sensor import INPUT_1
 from ev3dev2.sensor.lego import TouchSensor
 from ev3dev2.led import Leds
+from ev3dev2.sound import Sound
+from ev3dev2.button import Button
 
 import subprocess as sp
 import sys
@@ -34,7 +36,7 @@ while 1:
         sleep(0.01)
 
 # now wait for start button to be pressed
-while Button.ENTER not in b.buttons_pressed():
+while not b.enter:
     sleep(0.01)
 s.beep()
 
@@ -43,9 +45,9 @@ i = 0
 while 1:
     
     # request for balls detected
-    child.communicate(i)
     s = child.stdout.readline()
-    
+    while s == "":
+        s = child.stdout.readline()
     # Your code goes here
     if s [0:len(s) - 1] == "NONE":
         # if none balls found branch
