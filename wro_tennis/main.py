@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 
+
 from time import sleep
-from ev3dev2.button import Button
-from ev3dev2.sound import Sound
+
+from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, SpeedPercent, MoveTank
+from ev3dev2.sensor import INPUT_1
+from ev3dev2.sensor.lego import TouchSensor
+from ev3dev2.led import Leds
+
 import subprocess as sp
 import sys
 
@@ -38,5 +43,5 @@ while 1:
     else:
         # if balls found branch
         print(s)
-        
+
     sleep(0.01)
