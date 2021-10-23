@@ -7,8 +7,8 @@ Basic project for wro tennis and Ev3 simple and allows you detect balls in subpr
 
 
 How does this work:
-We got balls.py which detects circles of set color and returns (x, y, radius) of largest circle, and launched as subprocess from main.py it awaits for number in order to operate with fresh frames
-We got main.py which first awaits for balls.py to load it's libraries(takes about ~30 seconds it's a big deal in term of competition) then it awaits you to press ENTER button to launch your main program(allowed by rules as you've got ~90 sec for robot to setup) 
-To ask for a largest ball on frame:
-Send a number via communicate() method which differs from previous number
-if it is any circles of requred hsv balls.py will send (x, y, radius) of largest ball, else it will send "NONE" string
+1. We got balls.py which detects circles of set color and returns (x, y, radius) of largest circle, and launched as subprocess from main.py it awaits for number in order to operate with fresh frames
+2. We got main.py which first awaits for balls.py to load it's libraries(takes about ~30 seconds it's a big deal in term of competition) then it awaits you to press ENTER button to launch your main program(allowed by rules as you've got ~90 sec for robot to setup) 
+3. To ask for a largest ball on frame:
+4. Send a number via communicate() method which differs from previous number
+5. if it is any circles of requred hsv balls.py will send (x, y, radius) of largest ball, else it will send "NONE" string
